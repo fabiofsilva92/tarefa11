@@ -45,6 +45,7 @@ public class ClassePrincipal  {
         ClasseIndicador ind = new ClasseIndicador();
         int [] contador = new int [11];
         int novo = 0;
+        int teste= 0;
         
         
         Votação [] votosInd = new Votação [100]; //Criando a variavel para os votos nos indicadores
