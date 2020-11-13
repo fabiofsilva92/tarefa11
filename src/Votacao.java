@@ -3,14 +3,15 @@ class Votacao {
     int numeroSec;
     int numeroCand;
     
+    //testando
     Votacao()
     {
         this (0,0);
     }
     
-    Votacao (int NumeroSeção, int NumeroCandidato)
+    Votacao (int NumeroSecao, int NumeroCandidato)
     {
-        numeroSec = NumeroSeção;
+        numeroSec = NumeroSecao;
         numeroCand = NumeroCandidato;
     }
     
