@@ -90,7 +90,7 @@ public class ClasseIndicador {
     }
     
     //Quantidade de votos por candidato
-    public void QtdVotosCandidato(Votação[] votosInd)
+    public int [] [] QtdVotosCandidato(Votação[] votosInd)
     {
         int [] classificaCandidato = new int [100];
         int aux = 0;
@@ -126,40 +126,84 @@ public class ClasseIndicador {
         int cont = 0;
         int[][] candidatoVoto = new int [30][2];
         
-        int num = 0;
-        boolean verifica = true;
-        
-        
+        int num = 0;  
+        //Como o vetor já está em ordem crescente, a contagem será feita em sequencia, e interrompida caso seja necessário
         for (int i = 0 ; i<100; i++)
         {
-
-            for (int j = i ; j<100; j++)
+            for (int j = i ; j<100; j++) // Compara a posição i com todo o restando do array
             {   
                 if (classificaCandidato[i]==classificaCandidato[j])
                 {
-                    cont++;
+                    if(i>0 && classificaCandidato[i] == classificaCandidato[(i-1)]) //Se a posição i for igual a anterior, acrescento 99 ao j para nao fazer processamento desnecessário por todo o array
+                    {
+                        j=99;
+                    }
+                    else // caso contrário faz a contagem.
+                    {
+                        cont++;
+                    }
                 }
-                else
+                else // Se i for diferente de j já para a contagem.
                 {
                     j=99;
                 }
             }
             if(i>0 && classificaCandidato[i] == classificaCandidato[(i-1)])
             {
-
+                cont = 0;
             }
             else
             {
                 System.out.println("O candidato " +classificaCandidato[i]+ " teve " + cont + " votos");
-                candidatoVoto[num][0] = classificaCandidato[i];
-                candidatoVoto[num][1] = cont;
-                System.out.println("Candidato " +candidatoVoto[num][0] + " Votos " +candidatoVoto[num][1]);
-                num++;
+                candidatoVoto[num][0] = classificaCandidato[i]; //atribuindo a matriz o numero do candidto
+                candidatoVoto[num][1] = cont; // atribuindo a matriz a quantidade de votos
+                //System.out.println("Candidato " +candidatoVoto[num][0] + " Votos " +candidatoVoto[num][1]);
+                num++; //incrementando a posição da matriz
+                cont=0;
             }
-            cont=0;
-
         }
-
+        return candidatoVoto;   
+    }
+    
+    public void ColocaçãoCand(int [] [] candidatoVoto)
+    {
+        int auxQtd = 0;
+        int auxCand = 0;
+        
+        for(int i = 0; i<30; i++)
+        {
+            System.out.println("Candidato " +candidatoVoto[i][0] + " Votos " +candidatoVoto[i][1]);
+        }
+        
+        for(int i = 0; i<29; i++)
+        {
+            for(int j = i+1; j<30; j++)
+            {
+                if(candidatoVoto[i][1] > candidatoVoto[j][1])
+                {
+                 auxQtd = candidatoVoto[i][1];
+                 candidatoVoto[i][1] = candidatoVoto[j][1];
+                 candidatoVoto[j][1] = auxQtd;
+                 
+                 auxCand = candidatoVoto[i][0];
+                 candidatoVoto[i][0] = candidatoVoto[j][0];
+                 candidatoVoto[j][0] = auxCand;
+                }
+            }
+        }
+        System.out.println("ordenado: ");
+        
+        for(int i = 0; i<30; i++)
+        {
+            System.out.println("Candidato " +candidatoVoto[i][0] + " Votos " +candidatoVoto[i][1]);
+        }
+        
+        int contador = 1;
+        for(int i = 29; i>19; i--)
+        {
+            System.out.println("O Candidato em " +contador+ "º lugar foi o candidato " + candidatoVoto[i][0]+ " com " +candidatoVoto[i][1]+ " votos.");
+            contador++;
+        }
         
     }
 }

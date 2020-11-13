@@ -44,8 +44,6 @@ public class ClassePrincipal  {
     {
         ClasseIndicador ind = new ClasseIndicador();
         int [] contador = new int [11];
-
-        
         
         Votação [] votosInd = new Votação [100]; //Criando a variavel para os votos nos indicadores
         
@@ -64,6 +62,8 @@ public class ClassePrincipal  {
             votosInd[i].numeroCand = Integer.parseInt(ler.readLine());
         }
         
+        int[][] candidatoVoto = new int [30][2];
+        
         int opc = 0;
         
         while(opc!=9)
@@ -76,9 +76,9 @@ public class ClassePrincipal  {
                 break;
                 case 2 : ind.ClassificaQtdSeção(contador);
                 break;
-                case 3 : ind.QtdVotosCandidato(votosInd);
+                case 3 : candidatoVoto = ind.QtdVotosCandidato(votosInd);
                 break;
-                case 4 : ;
+                case 4 : ind.ColocaçãoCand(candidatoVoto);
                 break;
                 case 9 : JOptionPane.showMessageDialog(null, "Obrigado por utilizar a aplicação");
                 break;
