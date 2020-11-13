@@ -8,14 +8,14 @@ public class ClassePrincipal  {
     public static void main (String args[]) throws IOException
     {
         
-        Votação [] votos = new Votação [100];
+        Votacao [] votos = new Votacao [100];
         ClasseMetodos m = new ClasseMetodos();
         
         int opc = 0;
         
         for (int i = 0; i<100; i++)
         {
-            votos[i] = new Votação();
+            votos[i] = new Votacao();
         }
         
         while(opc!=9)
@@ -24,11 +24,11 @@ public class ClassePrincipal  {
             
             switch(opc)
             {
-                case 1 : m.FCADRASTRAVOTAÇÃO(votos) ;
+                case 1 : m.FCADRASTRAVOTACAO(votos) ;
                 break;
-                case 2 : m.FCLASSIFICASEÇÃO(votos);
+                case 2 : m.FCLASSIFICASECAO(votos);
                 break;
-                case 3 : m.FGRAVAVOTAÇÃO(votos);
+                case 3 : m.FGRAVAVOTACAO(votos);
                 break;
                 case 4 : indicadores();
                 break;
@@ -45,14 +45,14 @@ public class ClassePrincipal  {
         ClasseIndicador ind = new ClasseIndicador();
         int [] contador = new int [11];
         
-        Votação [] votosInd = new Votação [100]; //Criando a variavel para os votos nos indicadores
+        Votacao [] votosInd = new Votacao [100]; //Criando a variavel para os votos nos indicadores
         
         for(int i = 0; i<100; i++)
         {
-            votosInd[i] = new Votação();
+            votosInd[i] = new Votacao();
         }
         
-        String filename = "Votação2020.txt";
+        String filename = "Votacao2020.txt";
         
         BufferedReader ler = new BufferedReader(new FileReader(filename));
         
@@ -72,13 +72,13 @@ public class ClassePrincipal  {
             
             switch(opc)
             {
-                case 1 : contador = ind.qtdSeção(votosInd) ;
+                case 1 : contador = ind.qtdSecao(votosInd) ;
                 break;
-                case 2 : ind.ClassificaQtdSeção(contador);
+                case 2 : ind.ClassificaQtdSecao(contador);
                 break;
                 case 3 : candidatoVoto = ind.QtdVotosCandidato(votosInd);
                 break;
-                case 4 : ind.ColocaçãoCand(candidatoVoto);
+                case 4 : ind.ColocacaoCand(candidatoVoto);
                 break;
                 case 9 : JOptionPane.showMessageDialog(null, "Obrigado por utilizar a aplicação");
                 break;
