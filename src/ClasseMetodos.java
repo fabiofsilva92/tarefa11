@@ -6,7 +6,7 @@ import java.io.*;
 public class ClasseMetodos {
  
     //Cadastro de votos randomicos
-    public Votação [] FCADRASTRAVOTAÇÃO (Votação [] votos)
+    public Votacao [] FCADRASTRAVOTACAO (Votacao [] votos)
     {
         Random gerador = new Random();
         
@@ -20,7 +20,7 @@ public class ClasseMetodos {
     }
     
     //Classificação de seção
-    public Votação [] FCLASSIFICASEÇÃO(Votação [] votos)
+    public Votacao [] FCLASSIFICASECAO(Votacao [] votos)
     {
         int auxCand = 0;
         int auxSec = 0;
@@ -86,9 +86,9 @@ public class ClasseMetodos {
     }
     
     //Gravação de arquivos
-    public void FGRAVAVOTAÇÃO(Votação [] votos) throws IOException
+    public void FGRAVAVOTACAO(Votacao [] votos) throws IOException
     {
-        String fileName = "Votação2020.txt";
+        String fileName = "Votacao2020.txt";
         
         BufferedWriter gravar = new BufferedWriter(new FileWriter(fileName));
         

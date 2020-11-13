@@ -6,7 +6,7 @@ import java.io.*;
 public class ClasseIndicador {
     
     //Quantidade de eleitores por seção (votos = eleitores)
-    public int [] qtdSeção(Votação [] votosInd)
+    public int [] qtdSecao(Votacao [] votosInd)
     {
         int [] contador = new int [11];
         
@@ -30,7 +30,7 @@ public class ClasseIndicador {
 
     
     //Classifica a quantidade de eleitores por seção, colocando em um vetor classificado do menor para o maior
-    public void ClassificaQtdSeção(int [] contadorVotos)
+    public void ClassificaQtdSecao(int [] contadorVotos)
     {
         int aux = 0; //auxiliar da quantidade de votos para o bubble sort
         int [] vetorAuxSec = new int[11]; //Esse vetor será auxiliar para demarcar as posições das seções juntamente com sua quantidade de votos
@@ -90,7 +90,7 @@ public class ClasseIndicador {
     }
     
     //Quantidade de votos por candidato
-    public int [] [] QtdVotosCandidato(Votação[] votosInd)
+    public int [] [] QtdVotosCandidato(Votacao[] votosInd)
     {
         int [] classificaCandidato = new int [100];
         int aux = 0;
@@ -165,7 +165,7 @@ public class ClasseIndicador {
         return candidatoVoto;   
     }
     
-    public void ColocaçãoCand(int [] [] candidatoVoto)
+    public void ColocacaoCand(int [] [] candidatoVoto)
     {
         int auxQtd = 0;
         int auxCand = 0;
