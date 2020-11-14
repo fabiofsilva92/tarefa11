@@ -60,7 +60,9 @@ public class ClasseIndicador {
         }
         //Após a classificação a menor quantidade esta na primeira posição e a maior na ultima posição.
         System.out.println("A Seções foram classificadas: \nA Seção com menor quantidade de eleitores foi a seção " +vetorAuxSec[0]+ " que teve " +contadorVotos[0]+ " votos");
+        
         boolean verificador = true; //delimitador para a verificação
+        
         for(int i = 0; verificador ; i++) //verificando se as posições seguintes tem a mesma quantidade de votos para referenciar juntamente como a menor ou a maior quantidade de votos.
         {
             if(contadorVotos[i] == contadorVotos[(i+1)])
@@ -100,7 +102,7 @@ public class ClasseIndicador {
             classificaCandidato[i] = votosInd[i].numeroCand;
         }
         
-        //Classificando em ordem crescente o vetor auxiliar para nao bagunçar o votos.numeroCand em relação as respectivas seções.
+        //Classificando em ordem crescente o vetor auxiliar classificaCandidato.
         for (int i = 0; i<99; i++)
         {
             for(int j = i+1; j<100; j++)
@@ -112,21 +114,13 @@ public class ClasseIndicador {
                     classificaCandidato[j] = aux;
                 }
             }
-        }
-        
-        System.out.println("Ordenado:" );
-        
-        for(int i = 0; i<100; i++)
-        {
-            System.out.println (classificaCandidato[i]);
-        }
-        
+        }     
         
         //Contagem de votos por candidato.
         int cont = 0;
-        int[][] candidatoVoto = new int [30][2];
+        int[][] candidatoVoto = new int [30][2]; //Matriz que vai registrar o numero do candidato e a quantidade de votos
+        int num = 0; //contador para a quantidade de candidatos
         
-        int num = 0;  
         //Como o vetor já está em ordem crescente, a contagem será feita em sequencia, e interrompida caso seja necessário
         for (int i = 0 ; i<100; i++)
         {
@@ -157,14 +151,14 @@ public class ClasseIndicador {
                 System.out.println("O candidato " +classificaCandidato[i]+ " teve " + cont + " votos");
                 candidatoVoto[num][0] = classificaCandidato[i]; //atribuindo a matriz o numero do candidto
                 candidatoVoto[num][1] = cont; // atribuindo a matriz a quantidade de votos
-                //System.out.println("Candidato " +candidatoVoto[num][0] + " Votos " +candidatoVoto[num][1]);
                 num++; //incrementando a posição da matriz
                 cont=0;
             }
         }
-        return candidatoVoto;   
+        return candidatoVoto; //Retorno da matriz com a quantidade de votos para cada candidato. 
     }
     
+    //Classificando as 10 posições mais votadas.
     public void ColocacaoCand(int [] [] candidatoVoto)
     {
         int auxQtd = 0;
@@ -179,7 +173,7 @@ public class ClasseIndicador {
         {
             for(int j = i+1; j<30; j++)
             {
-                if(candidatoVoto[i][1] > candidatoVoto[j][1])
+                if(candidatoVoto[i][1] > candidatoVoto[j][1]) //Bubble Sort
                 {
                  auxQtd = candidatoVoto[i][1];
                  candidatoVoto[i][1] = candidatoVoto[j][1];
@@ -191,19 +185,13 @@ public class ClasseIndicador {
                 }
             }
         }
-        System.out.println("ordenado: ");
-        
-        for(int i = 0; i<30; i++)
-        {
-            System.out.println("Candidato " +candidatoVoto[i][0] + " Votos " +candidatoVoto[i][1]);
-        }
         
         int contador = 1;
+        
         for(int i = 29; i>19; i--)
         {
             System.out.println("O Candidato em " +contador+ "º lugar foi o candidato " + candidatoVoto[i][0]+ " com " +candidatoVoto[i][1]+ " votos.");
             contador++;
         }
-        
     }
 }
